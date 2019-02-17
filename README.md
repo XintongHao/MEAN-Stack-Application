@@ -1,6 +1,6 @@
 # MEAN-Stack-Application
 
-_Name: Xintong Hao_
+_Author: Xintong Hao_
 
 _Email: hxtong@bu.edu_
 

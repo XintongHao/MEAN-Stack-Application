@@ -1,6 +1,6 @@
 # Create a Simple Back-End Server
 
-_Name: Xintong Hao_
+_Author: Xintong Hao_
 
 _Email: hxtong@bu.edu_
 
