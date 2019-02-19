@@ -55,7 +55,7 @@ You can also use Postman to get the response.
 
 ### POST Method
 
-To test this route, open **Postman**, select `POST` as the method, then click the `Body` tab. Type the pair of key and value in `x-www-form-urlencoded`. The available keys are "name" and "method". You can enter any value you want to get the response. 
+To test this route, open **Postman**, select `POST` as the method, then click the `Body` tab. Type the pair of key and value in `x-www-form-urlencoded`. For example, you can type keys "name" and "method", and enter any value you want to get the response. 
 
 For example:
 
