@@ -1,11 +1,10 @@
 extends layout
 
 block content
-    body.bkimg1
-        div(class = 'bk1')
+    body.bkimg2
+        div(class = 'bk2')
             div(class = 'center')
-                h1 Trump's Quote:
-                p #{data.value}
+                h1 #{data.name}:
+                p #{data.description};
                 a(href='/')
                     button(type="button" class="btn btn-outline-secondary") Go Back
-

@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    body.bkimg2
+        div(class = 'bk2')
+            div(class = 'center')
+                h1 Search you Favorite Marvel Character
+                form(action = '/search/marvel', method='GET')
+                    div(class="col-auto" align='center')
+                        p
+                        input(class="form-control form-control-lg" name = 'character' required="" type="text" placeholder="character name")
+                        br
+                        button(type='submit', class="btn btn-secondary btn-lg") Search
+

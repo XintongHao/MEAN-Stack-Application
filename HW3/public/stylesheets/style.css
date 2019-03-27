@@ -17,7 +17,7 @@ a {
 
 .bk
 {
-  background: rgba(255, 181, 113, 0.75);
+  background: rgba(237, 209, 166, 0.75);
   color: #382109;
   font: 25px "Lucida Grande", Helvetica, Arial, sans-serif;
   /*font-size: 20px;*/
@@ -33,19 +33,37 @@ a {
   background: rgba(255, 241, 16, 0.75);
   color: black;
   font: 25px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*font-size: 20px;*/
   position: fixed;
   top: 10%;
   bottom: 10%;
   left: 10%;
   right: 10%;
 }
+
+.bk2
+{
+  background: rgba(251, 6, 0, 0.7);
+  color: white;
+  font: 25px "Lucida Grande", Helvetica, Arial, sans-serif;
+  position: fixed;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+}
+
 .bkimg {
   background-image: url(/images/Pig_Emoji_large.png);
   /*opacity: 0.2;*/
 }
+
 .bkimg1 {
   background-image: url(/images/Trump-Icon.jpg);
+  /*opacity: 0.2;*/
+}
+
+.bkimg2 {
+  background-image: url(/images/Marvel-Logo.png);
   /*opacity: 0.2;*/
 }
 

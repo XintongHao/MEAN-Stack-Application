@@ -4,9 +4,9 @@
  */
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
-const request =require("request");
 const express = require('express');
 const router = express.Router();
+
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
