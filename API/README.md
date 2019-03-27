@@ -63,12 +63,19 @@ The landing Page should be like this:
 
 ### Get Trump's Quotes!
 
+API: [Tronald Dump](https://www.tronalddump.io/)
+
 Now let's get some fun! Click on the "Trump's Meme" button and you will navigate to the `localhost:3000/hw3` page. Check the random greeting from Trump!
 
 ![alt text][image2]
 
 
 ### Get Marvel's Character
+
+API: [Marvel](https://developer.marvel.com/)
+
+> If you wanna run the app by yourself, first register as a developer and get your public key and private key. Store them in a text file in the root directory of `API` called `keys.txt`, the first line is your public key, the second line is your private key.
+
 
 You can also click on "Marvel's Character" button and navigate to a search page. Enter any Marvel's character you like in the search box and check the result!
 
