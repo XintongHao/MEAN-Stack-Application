@@ -54,7 +54,7 @@ Go to the terminal of the project and type the following command to run the app.
 ```sh
 $ node bin/www
 ```
-Then the app will listen on port 3000, where you can use URL `localhost:3000/hw1` to launch the web page.
+Then the app will listen on port 3000, where you can use URL `localhost:3000` to launch the web page.
 
 The landing Page should be like this:
 
