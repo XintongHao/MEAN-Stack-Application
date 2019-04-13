@@ -1,12 +1,11 @@
 <div *ngIf="hero">
   <!--*ngIf to conditionally include or exclude a block of HTML.-->
-
   <h2>{{hero.user}}'s Marvel Hero is {{hero.hero | uppercase}}</h2>
   <div><span>user: </span>{{hero.user}}</div>
   <div>
-    <label>name:
+    <label>Hero:
       <input [(ngModel)]="hero.hero" placeholder="name"/>
     </label>
   </div>
-
+  <button (click)="goBack()">go back</button>
 </div>

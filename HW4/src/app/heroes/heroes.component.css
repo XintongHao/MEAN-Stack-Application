@@ -1,14 +1,20 @@
 /* HeroesComponent's private CSS styles */
+h2 {
+  /*font-size: 1em;*/
+  color: #e40731;
+  /*margin-top: 0;*/
+  /*padding-top: 0;*/
+}
 .selected {
   background-color: #e40731 !important;
   color: white;
 }
-/*.heroes {*/
-/*  margin: 0 0 10em 0;*/
-/*  list-style-type: none;*/
-/*  padding: 0;*/
-/*  width: 10em;*/
-/*}*/
+.heroes {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
 .heroes li {
   cursor: pointer;
   position: relative;
