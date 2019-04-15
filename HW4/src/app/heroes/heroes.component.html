@@ -2,8 +2,29 @@
 <ul class="heroes">
   <!--  The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.-->
   <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.user}}">
+    <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.user}} </span> {{hero.hero}}
     </a>
+    <button class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
   </li>
 </ul>
+<div>
+<!--  <label>Add Hero:-->
+<!--    <input #heroName />-->
+<!--  </label>-->
+<!--  &lt;!&ndash; (click) passes input value to add() and then clears the input &ndash;&gt;-->
+<!--  <button (click)="add(heroName.value); heroName.value=''">-->
+<!--    add-->
+<!--  </button>-->
+  <label>
+    User Name: <input #userName>
+  </label>
+  <label>
+    Hero Name: <input #heroName>
+  </label>
+  <button (click)="add(userName.value, heroName.value);">
+    add
+  </button>
+</div>
+<!--Hero Name: <input type="text" name="heroName" ng-model="hero.hero">-->
