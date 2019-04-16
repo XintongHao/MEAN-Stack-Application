@@ -12,9 +12,9 @@
     <h4>{{hero.hero | uppercase}}'s Description </h4>
 
   </div>
-  <div>
-    <button (click)="getDescription(hero.hero)"> GET Description </button>
-    <p *ngIf="description"> {{description.data.description}}</p>
-  </div>
+</div>
+<div>
+  <button (click)="getDescription(hero.hero)"> GET Description </button>
+  <p *ngIf="description"> {{description.data.description}}</p>
   <button (click)="goBack()">go back</button>
 </div>
