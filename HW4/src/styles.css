@@ -10,6 +10,12 @@ h2, h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
+h4 {
+  color: #e40731;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  /*font-weight: lighter;*/
+}
 body {
   margin: auto;
   max-width: 500px;

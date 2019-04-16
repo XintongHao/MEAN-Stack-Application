@@ -37,4 +37,10 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  getDescription(): void {
+    console.log('in hero detail: getDescription');
+    this.heroService.getDescription(this.hero.hero);
+      // .subscribe(hero => this.hero = hero);
+  }
 }

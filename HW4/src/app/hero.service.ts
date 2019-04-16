@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-// import { HEROES } from './mock-heroes';
+import { HEROES } from './mock-heroes';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -16,6 +16,8 @@ const httpOptions = {
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
+  private hw3Url = 'http://localhost:3000/users';
+  private data: Object = [];
 
   constructor(
     private http: HttpClient,
@@ -24,8 +26,8 @@ export class HeroService {
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
-    // send the message _after_ fetching the heroes
-    // this.messageService.add('HeroService: fetched heroes');
+    this.messageService.add('HeroService: fetched heroes');
+    // return of(HEROES);
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
@@ -54,6 +56,7 @@ export class HeroService {
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
+    // this.messageService.add(`HeroService: fetched hero id=${id}`);
     // return of(HEROES.find(hero => hero.id === id));
   }
 
@@ -96,7 +99,21 @@ export class HeroService {
     );
   }
 
-
+  getDescription(heroName: string) {
+    this.http.get(this.hw3Url)
+      .subscribe(
+        res => {
+          // var id, user, hero;
+          this.data = res;
+          console.log(this.data);
+          for(var i = 0; i < 5; i++){
+            if (this.data[i].hero === heroName) {
+              this.log(`Description: id=${this.data[i].id}, user=${this.data[i].user}, hero=${this.data[i].hero}`);
+            }
+          }
+        }
+      );
+  }
 
   /**
    * Handle Http operation that failed.

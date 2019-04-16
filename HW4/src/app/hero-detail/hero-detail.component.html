@@ -8,5 +8,13 @@
       <button (click)="save()">save</button>
     </label>
   </div>
+  <div>
+    <h4>{{hero.hero | uppercase}}'s Description </h4>
+<!--    <p *ngIf="getDescription(hero.hero)">-->
+<!--    </p>-->
+
+    <button (click)="getDescription()"> GET Description </button>
+
+  </div>
   <button (click)="goBack()">go back</button>
 </div>
