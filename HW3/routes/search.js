@@ -35,8 +35,11 @@ router.get('/marvel', function(req, res) {
         console.log('Reading keys done');
         console.log("=======================");
         // Send Request!
+        console.log("KEY YOU NEED:");
+        console.log('&ts=' + ts + '&apikey=' + APIKEY + '&hash=' + HASH);
         const url = 'https://gateway.marvel.com:443/v1/public/characters?name=' + character + '&ts=' + ts + '&apikey=' + APIKEY + '&hash=' + HASH;
-
+        console.log("URL YOU NEED:");
+        console.log(url);
         let promise = fetch(url, {
             headers: new Headers({
                 'accept': '*/*'
