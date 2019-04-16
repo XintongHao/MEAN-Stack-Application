@@ -100,17 +100,12 @@ export class HeroService {
   }
 
   getData(heroName: string) {
-    // let headers = new HttpHeaders({'Content-Type': 'application/json'})
-    // // headers.append('Content-Type', 'application/json');
-    // // headers.append('projectid', this.id);
-    // let params = new URLSearchParams();
-    // params.append('req', heroName);
     return this.http.get(this.hw3Url, {params:{req: heroName}})
       .pipe(
         catchError(this.handleError<any>('updateHero'))
       );
   }
-  // private productsObservable : Observable<any[]> ;
+
   getDescription(heroName: string): Observable<any> {
 
     return this.getData(heroName)
@@ -119,21 +114,8 @@ export class HeroService {
         this.data = res;
         console.log(this.data); }),
         catchError(this.handleError<any>('getData', []))
-        // return this.data;
-
       );
 
-    // this.http.get(this.hw3Url)
-    //   .subscribe(
-    //     res => {
-    //       // var id, user, hero;
-    //       this.data = res;
-    //       console.log(this.data);
-    //       console.log(this.data.data.value);
-    //
-    //       return this.data;
-    //     }
-    //   );
   }
 
   /**
