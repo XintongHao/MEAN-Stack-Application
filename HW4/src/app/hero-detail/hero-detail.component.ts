@@ -12,7 +12,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
-
+  description: Object = [];
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -21,6 +21,7 @@ export class HeroDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHero();
+    // this.getDescription();
   }
 
   getHero(): void {
@@ -40,7 +41,10 @@ export class HeroDetailComponent implements OnInit {
 
   getDescription(): void {
     console.log('in hero detail: getDescription');
-    this.heroService.getDescription(this.hero.hero);
-      // .subscribe(hero => this.hero = hero);
+    this.heroService.getDescription(this.hero.hero)
+      .subscribe(res => {
+        this.description = res;
+        console.log(this.description);
+      });
   }
 }

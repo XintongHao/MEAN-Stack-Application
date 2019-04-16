@@ -10,11 +10,11 @@
   </div>
   <div>
     <h4>{{hero.hero | uppercase}}'s Description </h4>
-<!--    <p *ngIf="getDescription(hero.hero)">-->
-<!--    </p>-->
 
-    <button (click)="getDescription()"> GET Description </button>
-
+  </div>
+  <div>
+    <button (click)="getDescription(hero.hero)"> GET Description </button>
+    <p *ngIf="description"> {{description.data.description}}</p>
   </div>
   <button (click)="goBack()">go back</button>
 </div>
