@@ -1,3 +1,12 @@
+/*
+* This homework I used 'mongodb' package to store the google user's data (googleId, username, first email)
+* Since the database only stored one type of data,
+* I didn't use Model Schema which was really useful when came to multiple data types.
+* (I prefer to use 'mongoose' when have multiple data types since it has a more convenient model Schema method)
+*
+*
+* */
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -12,6 +21,7 @@ const usersRouter = require('./routes/users');
 const app = express();
 
 // Connect to mongoDB
+
 let db;
 const mongoUtil = require('./MongoUtil');
 mongoUtil.connect( function(err, client) {
@@ -22,7 +32,6 @@ mongoUtil.connect( function(err, client) {
     console.log(result);
   }));
 });
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,44 +54,21 @@ app.use(require('express-session')({
   saveUninitialized: false
 }));
 
-
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done)=> {
-  // done(null, user._id);
-  console.log("In serializeUser: ", user);
   done(null, user);
 });
-
-// passport.deserializeUser((id, done) => {
-//   db.collection('users').findOne({}, {projection: { _id: id }}).then((user) => {
-//     done(null, user);
-//   })
-// });
-
-// passport.deserializeUser((user, done) => {
-//   db.collection('users').find({},
-//       {projection: {
-//         'googleID': user.googleID,
-//         'username': user.username,
-//         'email': user.email
-//       }})
-//       .then((thisUser) => {
-//     done(null, thisUser);
-//   })
-// });
 
 passport.deserializeUser((user, done) => {
   db.collection('users').find({},
       {projection: {
-          'googleID': user.googleID,
-          'username': user.username,
-          'email': user.email
+          '_id': user._id,
         }}, function(err, result) {
               if(err) throw err;
-              console.log("In deserializeUser: ", user);
+              console.log("In deserializeUser", user);
               done(null, user);
       })
 });
@@ -97,7 +83,7 @@ passport.use(
     function(req, token, refreshToken, profile, done) {
       process.nextTick(function() {
         if(!req.user) {
-          db.collection('users').findOne({}, {projection: {'googleID': profile.id}}, function(err, user){
+          db.collection('users').findOne({}, {projection: {'_id': profile._id}}, function(err, user){
             if(err)
               return done(err);
             if(user) {
