@@ -33,22 +33,30 @@ router.get('/userList', function(req, res, next) {
   // });
 });
 
-router.get('/google', passport.authenticate('google', {
+router.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 
-router.get('/oauth2callback', passport.authenticate('google', {
-  // successRedirect: 'https://localhost:4200/profile',
-  successRedirect: '/profile',
-  failureRedirect: '/'
-}));
+// router.get('/oauth2callback', passport.authenticate('google', {
+//   // successRedirect: 'https://localhost:4200/profile',
+//   successRedirect: '/profile',
+//   failureRedirect: '/'
+// }));
+
+router.get('/auth/oauth2callback', passport.authenticate('google', { failureRedirect: '/' }),
+    function(req, res) {
+      // return res.redirect('/profile/?' + req.user._id);
+      console.log("IN SERVER OAUTH CALLBACK", req.user);
+      return res.redirect('/profile/?' + req.user._id);
+      // return res.redirect('https://localhost:4200/profile/?' + req.user._id);
+    });
 
 router.get('/profile', function(req, res) {
-  // res.redirect('https://localhost:4200/profile');
+  // res.send('https://localhost:4200/profile');
   res.send(req.user);
 });
 
-router.get('/logout', function(req, res) {
+router.get('/auth/logout', function(req, res) {
   req.logout();
   req.flash("success", "LOGGED YOU OUT!");
   res.redirect('/');

@@ -35,20 +35,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Add headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', '"X-PINGOTHER,X-Requested-With,Accept,Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, Accept, X-Requested-With');
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Credentials', true);
     // Pass to next layer of middleware
     next();
 });
 // use it before all route definitions
 app.use(cors());
+app.options('*', cors());
 
 
 // Passport configuration
@@ -63,18 +64,19 @@ app.use(require('express-session')({
 }));
 
 app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
-
-passport.deserializeUser((id, done) => {
-    User.findById(id).then((user) => {
-        done(null, user);
-    });
-});
+// passport.serializeUser((user, done) => {
+//     done(null, user.id);
+// });
+//
+// passport.deserializeUser((id, done) => {
+//     User.findById(id).then((user) => {
+//         done(null, user);
+//     });
+// });
 
 // passport.serializeUser((user, done)=> {
 //   done(null, user);
@@ -101,6 +103,7 @@ passport.deserializeUser((id, done) => {
         done(null, user);
     });
 });
+
 passport.use(
     new GoogleStrategy({
             clientID: googleConfig.client_id,
@@ -132,47 +135,6 @@ passport.use(
             })
         })
 );
-// passport.use(
-//     new GoogleStrategy({
-//       clientID: googleConfig.client_id,
-//       clientSecret: googleConfig.client_secret,
-//       callbackURL: googleConfig.redirect_url,
-//       passReqToCallback: true
-//     },
-//     function(req, token, refreshToken, profile, done) {
-//       process.nextTick(function() {
-//         if(!req.user) {
-//           db.collection('users').findOne({}, {projection: {'_id': profile._id}}, function(err, user){
-//             if(err)
-//               return done(err);
-//             if(user) {
-//               console.log('User has already sign in: ', user);
-//               return done(null, user);
-//             } else {
-//               try{
-//                 const newUser = {
-//                   googleID: profile.id,
-//                   username: profile.displayName,
-//                   email: (profile.emails[0].value || '').toLowerCase() // put the first email
-//                 };
-//                 db.collection('users').insertOne(newUser, function(err, res) {
-//                   if(err) throw err;
-//                   console.log('Create a new user: ', newUser);
-//                   return done(null, newUser);
-//                 })
-//                     // .then(() => {
-//                 //   console.log('Create a new user');
-//                 //   return done(null, user);
-//                 // })
-//               } catch (e) {
-//                 console.log(e);
-//               }
-//             }
-//           })
-//         }
-//       })
-//     })
-// );
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;

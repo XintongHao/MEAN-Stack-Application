@@ -3,34 +3,31 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 const apiURL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiService {
 
   constructor(private http: HttpClient) { }
 
   googleLogin(): Observable<any> {
-    const URL = `${apiURL}/google`;
+    const URL = `${apiURL}/auth/google`;
     const httpOptions = {
       headers: new HttpHeaders(
-        {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
+        {'Content-Type': 'application/json',
+                   'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+        })
     };
-    return this.http.get(URL, httpOptions)
+    return this.http.post(URL, httpOptions)
       .pipe(
         map(this.extractData),
         catchError(this.handleError)
       );
   }
-
-  // getProfile(): Observable<any> {
-  //   const URL =
-  // }
 
   getUsers(): Observable<any> {
     const URL = `${apiURL}/userList`;
