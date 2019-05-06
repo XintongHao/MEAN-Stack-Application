@@ -68,32 +68,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// passport.serializeUser((user, done) => {
-//     done(null, user.id);
-// });
-//
-// passport.deserializeUser((id, done) => {
-//     User.findById(id).then((user) => {
-//         done(null, user);
-//     });
-// });
-
-// passport.serializeUser((user, done)=> {
-//   done(null, user);
-// });
-//
-// passport.deserializeUser((user, done) => {
-//     done(null, user);
-//   // db.collection('users').find({},
-//   //     {projection: {
-//   //         '_id': user._id,
-//   //       }}, function(err, result) {
-//   //             if(err) throw err;
-//   //             console.log("In deserializeUser", user);
-//   //             done(null, user);
-//   //     })
-// });
-
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
