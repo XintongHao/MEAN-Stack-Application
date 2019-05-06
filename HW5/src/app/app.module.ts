@@ -28,11 +28,6 @@ const appRoutes: Routes = [
     data: {title: 'User List'}
   },
   {
-    path: 'api',
-    component: GoogleLoginComponent,
-    data: {title: 'Google Login'}
-  },
-  {
     path: 'profile',
     component: ProfileComponent,
     data: {title: 'Google Profile'}

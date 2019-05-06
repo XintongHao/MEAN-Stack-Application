@@ -3,8 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const User = require("../models/user");
 
-// let db;
-// const mongoUtil = require('../MongoUtil');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,40 +17,23 @@ router.get('/userList', function(req, res, next) {
       res.send(allUsers);
     }
   })
-  // mongoUtil.connect( function(err, client) {
-  //   if(err) console.log(err);
-  //   db = mongoUtil.getDB();
-  //   db.collection("users").find({}).toArray(function(err, result) {
-  //     if(err) throw err;
-  //     console.log(result);
-  //     res.send(result);
-  //     // res.write(JSON.stringify({success: true, UserList: result}, null, 2));
-  //     res.end();
-  //
-  //   })
-  // });
 });
 
 router.get('/auth/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
-
-// router.get('/oauth2callback', passport.authenticate('google', {
-//   // successRedirect: 'https://localhost:4200/profile',
-//   successRedirect: '/profile',
-//   failureRedirect: '/'
-// }));
-
+/*
+* TODO: callback should redirect to the 'https://localhost:4200/profile'.
+* */
 router.get('/auth/oauth2callback', passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
-      // return res.redirect('/profile/?' + req.user._id);
+
       console.log("IN SERVER OAUTH CALLBACK", req.user);
       return res.redirect('/profile/?' + req.user._id);
-      // return res.redirect('https://localhost:4200/profile/?' + req.user._id);
+      // return res.redirect('https://localhost:4200/profile');
     });
 
 router.get('/profile', function(req, res) {
-  // res.send('https://localhost:4200/profile');
   res.send(req.user);
 });
 

@@ -3,18 +3,8 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
-  <a href="/auth/google" class="btn btn-danger btn-block">
-    <!--    <span class="fa fa-google-plus"></span>-->
-    Google Login
-  </a>
-
-  <a href="/auth/logout" class="btn btn-warning btn-block">
-    Log Out
-  </a>
+  <app-google-login></app-google-login>
   <app-user-list></app-user-list>
-
 </div>
 
 <router-outlet></router-outlet>

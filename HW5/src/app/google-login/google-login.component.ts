@@ -13,23 +13,19 @@ export class GoogleLoginComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
-      this.api.googleLogin()
-        .subscribe(res => {
-          console.log(res);
-          this.data = res;
-        }, err => {
-          console.log(err);
-        });
   }
-
+  /*
+  *  Go to api.service.ts for details.
+  * */
   login(): void {
-    this.api.googleLogin()
-      .subscribe(res => {
-        console.log(res);
-        this.data = res;
-      }, err => {
-        console.log(err);
-      });
+    this.api.googleLogin();
+    // this.api.googleLogin()
+    //   .subscribe(res => {
+    //     console.log(res);
+    //     this.data = res;
+    //   }, err => {
+    //     console.log(err);
+    //   });
   }
 
 }

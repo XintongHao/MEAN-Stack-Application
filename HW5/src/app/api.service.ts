@@ -12,21 +12,24 @@ const apiURL = 'http://localhost:3000';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-
-  googleLogin(): Observable<any> {
+  /*
+  * TODO: This part should have returned the google user's profile in localhost:4200/profile
+  * */
+  googleLogin(): void {
     const URL = `${apiURL}/auth/google`;
-    const httpOptions = {
-      headers: new HttpHeaders(
-        {'Content-Type': 'application/json',
-                   'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-        })
-    };
-    return this.http.post(URL, httpOptions)
-      .pipe(
-        map(this.extractData),
-        catchError(this.handleError)
-      );
+    window.location.assign(URL);
+    // const httpOptions = {
+    //   headers: new HttpHeaders(
+    //     {'Content-Type': 'application/json',
+    //                'Access-Control-Allow-Origin': '*',
+    //       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+    //     })
+    // };
+    // return this.http.post(URL, httpOptions)
+    //   .pipe(
+    //     map(this.extractData),
+    //     catchError(this.handleError)
+    //   );
   }
 
   getUsers(): Observable<any> {
